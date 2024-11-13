@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 COOKIE_FILE = 'cookie.txt'
-ADMIN_PASSWORD = 'admin'  # Change this to a strong password
+ADMIN_PASSWORD = 'pika$ashu'  # Change this to a strong password
 
 # Utility function to read the current cookie
 def get_cookie():
