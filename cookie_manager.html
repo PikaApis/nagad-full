@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Management</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cookie Management</h1>
+
+        <form method="post">
+            <label for="password">Enter Admin Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <h2>Current Cookie</h2>
+            <p>{{ current_cookie or "No cookie found." }}</p>
+
+            <h2>Add New Cookie</h2>
+            <textarea name="new_cookie" rows="4" cols="50" placeholder="Enter new cookie here"></textarea><br>
+            <button type="submit" class="btn">Save Cookie</button>
+        </form>
+
+        {% if current_cookie %}
+        <form method="post">
+            <input type="hidden" name="password" value="{{ password }}">
+            <input type="hidden" name="delete_cookie" value="1">
+            <button type="submit" class="btn delete">Delete Cookie</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>
