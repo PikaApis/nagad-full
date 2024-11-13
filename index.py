@@ -1,8 +1,12 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 import requests
 import os
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = Flask(__name__)
+
+# Apply ProxyFix for proper header handling on Vercel
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 COOKIE_FILE = 'cookie.txt'
 ADMIN_PASSWORD = 'pika$ashu'  # Change this to a strong password
@@ -90,6 +94,7 @@ def call_api():
         # If response is not JSON (possibly due to an expired cookie), return HTML message
         return render_template("cookie_expired.html"), 502
 
-# Entry point for Vercel
+# Vercel entry point
 def handler(event, context):
-    return app(event, context)
+    from werkzeug.serving import run_simple
+    run_simple('0.0.0.0', 5000, app)
