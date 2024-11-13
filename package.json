@@ -1,11 +1,12 @@
 {
-  "name": "nagad-full-info-api",
+  "name": "nagad-project",
   "version": "1.0.0",
-  "description": "A Flask app for managing Nagad cookies with an API and a dashboard.",
-  "main": "index.py",
+  "main": "index.js",
   "scripts": {
-    "start": "vercel dev"
+    "start": "node index.js"
   },
-  "author": "Shahadat Hassan",
-  "license": "MIT"
+  "dependencies": {
+    "axios": "^1.3.4",
+    "express": "^4.18.2"
+  }
 }
