@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
 COOKIE_FILE = 'cookie.txt'
-ADMIN_PASSWORD = 'pika$ashu'  # Change this to a strong password
+ADMIN_PASSWORD = 'admin'  # Change this to a strong password
 
 # Utility function to read the current cookie
 def get_cookie():
@@ -98,3 +98,4 @@ def call_api():
 def handler(event, context):
     from werkzeug.serving import run_simple
     run_simple('0.0.0.0', 5000, app)
+    
